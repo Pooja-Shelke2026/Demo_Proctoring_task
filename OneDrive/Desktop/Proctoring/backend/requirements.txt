@@ -1,0 +1,11 @@
+opencv-python
+mediapipe
+mysql-connector-python
+numpy
+fastapi
+uvicorn
+ultralytics
+torch
+numpy
+sounddevice
+

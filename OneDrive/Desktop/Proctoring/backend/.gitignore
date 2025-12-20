@@ -1,0 +1,16 @@
+# Virtual environments
+proctor_env/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+
+# OS files
+.DS_Store
+
+# Large model files
+yolov8n.pt

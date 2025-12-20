@@ -1,0 +1,37 @@
+<script>
+let lastHiddenTime = null;
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    lastHiddenTime = Date.now();
+  } else {
+    if (lastHiddenTime) {
+      sendTabSwitchEvent(lastHiddenTime, Date.now());
+      lastHiddenTime = null;
+    }
+  }
+});
+
+window.addEventListener("blur", () => {
+  lastHiddenTime = Date.now();
+});
+
+window.addEventListener("focus", () => {
+  if (lastHiddenTime) {
+    sendTabSwitchEvent(lastHiddenTime, Date.now());
+    lastHiddenTime = null;
+  }
+});
+
+function sendTabSwitchEvent(start, end) {
+  fetch("http://localhost:8000/tab-switch", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      session_id: SESSION_ID,
+      start_time_ms: start,
+      end_time_ms: end
+    })
+  });
+}
+</script>
