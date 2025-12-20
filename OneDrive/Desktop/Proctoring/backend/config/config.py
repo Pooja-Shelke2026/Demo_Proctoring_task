@@ -1,6 +1,6 @@
 DB_CONFIG = {
     "host": "localhost",
     "user": "root",
-    "password": "Pooja@1905",
+    "password": "your_password",
     "database": "proctoring_db"
 }
